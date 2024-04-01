@@ -1,26 +1,31 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-int num[20000];
+#define MAX_SIZE 20000
+
+int num[MAX_SIZE];
+
+int compare(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b);
+}
 
 int main() {
-	int N;
-	int rep;
+    int N;
 
-	cin >> N;
-	for (int i = 0; i < N; i++) {
-		cin >> num[i];
-	}
+    scanf("%d", &N);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &num[i]);
+    }
 
-	sort(num, num + N);
+    // Sort the array
+    qsort(num, N, sizeof(int), compare);
 
-	if (N % 2 == 0) {
-		cout << num[N / 2 - 1];
-	}
-	else {
-		cout << num[N / 2];
-	}
+    // Find the median
+    if (N % 2 == 0) {
+        printf("%d", num[N / 2 - 1]);
+    } else {
+        printf("%d", num[N / 2]);
+    }
 
-	return 0;
+    return 0;
 }
