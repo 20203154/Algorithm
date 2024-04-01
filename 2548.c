@@ -17,10 +17,8 @@ int main() {
         scanf("%d", &num[i]);
     }
 
-    // Sort the array
     qsort(num, N, sizeof(int), compare);
 
-    // Find the median
     if (N % 2 == 0) {
         printf("%d", num[N / 2 - 1]);
     } else {
